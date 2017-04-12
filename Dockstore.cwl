@@ -2,7 +2,7 @@
 
 class: CommandLineTool
 id: "synapse-submit"
-label: "Synapse get tool"
+label: "Synapse submit tool"
 
 cwlVersion: v1.0
 
@@ -17,7 +17,7 @@ dct:creator:
 
 requirements:
 - class: DockerRequirement
-  dockerPull: 
+  dockerPull: thomasvyu/dockstore-tool-synapse-submit:1.6.1--1
 
 inputs:
   config_file:
