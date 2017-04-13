@@ -39,7 +39,7 @@ inputs:
       prefix: -t
 
   file:
-    type: string?
+    type: File?
     inputBinding:
       position: 4
       prefix: -f

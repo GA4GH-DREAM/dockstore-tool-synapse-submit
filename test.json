@@ -4,6 +4,10 @@
         "path": "test.synapseConfig"
     },
     "eval_id": 6176859,
-    "file":"README.md",
+    "file": {
+        "class": "File",
+        "path": "README.md"
+    },
     "parent_id":"syn4990358",
+    "entity_id":"syn8518936"
 }
