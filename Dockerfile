@@ -8,7 +8,6 @@ FROM ubuntu:16.04
 # Metadata
 LABEL base.image="ubuntu:16.04"
 LABEL version="1"
-LABEL branch="develop"
 LABEL software="synapseclient"
 LABEL software.version="1.6.1"
 LABEL description="Programmatic interface to Synapse services for Python"
@@ -22,6 +21,7 @@ MAINTAINER Thomas V Yu <thomasyu888@gmail.com>
 
 # set version here to minimize need for edits below
 ENV VERSION=1.6.1
+ENV BRANCH=develop
 
 # set up packages
 USER root
@@ -31,7 +31,7 @@ ENV PACKAGES python-dev git python-setuptools python-pip
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ${PACKAGES}
 
-RUN git clone -b ${branch} git://github.com/Sage-Bionetworks/synapsePythonClient.git && \
+RUN git clone -b ${BRANCH} git://github.com/Sage-Bionetworks/synapsePythonClient.git && \
     cd synapsePythonClient && \
     #git checkout v${VERSION} && \
     python setup.py develop
