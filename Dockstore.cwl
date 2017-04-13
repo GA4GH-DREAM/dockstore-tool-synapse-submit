@@ -24,31 +24,37 @@ inputs:
     type: File
     inputBinding:
       position: 1
+      prefix: -c
 
   eval_id:
     type: int
     inputBinding:
       position: 2
+      prefix: -e
 
   team_name:
     type: string?
     inputBinding:
       position: 3
+      prefix: -t
 
   file:
     type: string?
     inputBinding:
       position: 4
+      prefix: -f
 
   parent_id:
     type: string?
     inputBinding:
       position: 5
+      prefix: -p
 
   entity_id:
     type: string?
     inputBinding:
       position: 6
+      prefix: -i
 
 outputs: []
 

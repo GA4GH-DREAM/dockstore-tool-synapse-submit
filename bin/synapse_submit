@@ -1,23 +1,31 @@
 #!/usr/bin/env bash
 set -euf -o pipefail
 
-while getopts ":t:" opt; do
-  case $opt in
-   	t) team="$OPTARG"
-    ;;
-    \?) echo "Invalid option -$OPTARG" >&2
-    ;;
-  esac
+CMD_ARGS=('synapse' 'submit')
+while getopts "c:e:t:i:f:p:h" ARG; do
+    case "$ARG" in
+    	c ) CONFIG=$OPTARG;;
+		e ) EVAL_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--evalID' $EVAL_ID);;
+        t ) TEAM_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--team' $TEAM_ID);;
+        i ) ENTITY_ID=$OPTARG CMD_ARGS=("${CMD_ARGS[@]}" '--entity' $ENTITY_ID);;
+        f ) FILE_PATH=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--file' $FILE_PATH);;
+		p ) PARENT_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--parentId' $PARENT_ID);;
+        h ) usage; exit 0;;
+        * ) usage; exit 1;;
+    esac
 done
+shift $(($OPTIND - 1))
+
 # parse credentials from config file
-#CREDENTIALS=($(python /usr/local/bin/parse_config.py ${1}))
-#CREDENTIALS=($(python parse_config.py ${1}))
+#CREDENTIALS=($(python /usr/local/bin/parse_config.py ${CONFIG}))
+CREDENTIALS=($(python parse_config.py ${CONFIG}))
 
 # get file from Synapse
-#synapse login -u ${CREDENTIALS[0]} -p ${CREDENTIALS[1]} --rememberMe
-echo $#
-echo "$team"
-#if [ "$#" == "5" ]
-#then
-#	synapse submit --evalID ${2} --team ${3} --file ${4} --parentId ${5}
-#fi
+synapse login -u ${CREDENTIALS[0]} -p ${CREDENTIALS[1]} --rememberMe
+
+
+COMMAND=$( IFS=' '; echo "${CMD_ARGS[*]}" );
+echo $COMMAND
+$COMMAND
+
+
