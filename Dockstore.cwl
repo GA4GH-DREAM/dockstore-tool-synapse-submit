@@ -17,7 +17,7 @@ dct:creator:
 
 requirements:
 - class: DockerRequirement
-  dockerPull: thomasvyu/dockstore-tool-synapse-submit:1.6.1--1
+  dockerPull: thomasvyu/dockstore-tool-synapse-submit
 
 inputs:
   config_file:
@@ -25,10 +25,30 @@ inputs:
     inputBinding:
       position: 1
 
-  synapse_id:
-    type: string
+  eval_id:
+    type: int
     inputBinding:
       position: 2
+
+  team_name:
+    type: string
+    inputBinding:
+      position: 3
+
+  file:
+    type: string?
+    inputBinding:
+      position: 4
+
+  parent_id:
+    type: string?
+    inputBinding:
+      position: 5
+
+  entity_id:
+    type: string?
+    inputBinding:
+      position: 6
 
 outputs:
   output:
