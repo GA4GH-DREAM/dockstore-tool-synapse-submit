@@ -31,7 +31,7 @@ inputs:
       position: 2
 
   team_name:
-    type: string
+    type: string?
     inputBinding:
       position: 3
 
@@ -50,10 +50,6 @@ inputs:
     inputBinding:
       position: 6
 
-outputs:
-  output:
-    type: File
-    outputBinding:
-      glob: $(inputs.output_filename)
+outputs: []
 
 baseCommand: ["bash", "/usr/local/bin/synapse_submit"]
