@@ -4,7 +4,7 @@ set -euf -o pipefail
 CMD_ARGS=('synapse' 'submit')
 while getopts "c:e:t:i:f:p:h" ARG; do
     case "$ARG" in
-    	c ) CONFIG=$OPTARG;;
+    	c ) CONFIG=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--c' $CONFIG);;
 		e ) EVAL_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--evalID' $EVAL_ID);;
         t ) TEAM_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--team' $TEAM_ID);;
         i ) ENTITY_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--entity' $ENTITY_ID);;
@@ -17,12 +17,12 @@ done
 shift $(($OPTIND - 1))
 
 # parse credentials from config file
-CREDENTIALS=($(python /usr/local/bin/parse_config.py ${CONFIG}))
+#CREDENTIALS=($(python /usr/local/bin/parse_config.py ${CONFIG}))
 #CREDENTIALS=($(python parse_config.py ${CONFIG}))
 #bash synapse_submit -c ../test.synapseConfig -f ../README.md  -p syn4990358 -e 6176859
 
 # get file from Synapse
-synapse login -u ${CREDENTIALS[0]} -p ${CREDENTIALS[1]} --rememberMe
+#synapse login -u ${CREDENTIALS[0]} -p ${CREDENTIALS[1]} --rememberMe
 
 COMMAND=$( IFS=' '; echo "${CMD_ARGS[*]}" );
 echo $COMMAND
