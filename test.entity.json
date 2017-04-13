@@ -1,0 +1,8 @@
+{
+    "config_file": {
+        "class": "File",
+        "path": "test.synapseConfig"
+    },
+    "eval_id": "6176859",
+    "entity_id":"syn8518936"
+}
