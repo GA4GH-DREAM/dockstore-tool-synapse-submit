@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euf -o pipefail
 
-CMD_ARGS=('synapse' '--debug' 'submit')
+CMD_ARGS=('synapse' 'submit')
 while getopts "c:e:t:i:f:p:h" ARG; do
     case "$ARG" in
     	c ) CONFIG=$OPTARG;;
