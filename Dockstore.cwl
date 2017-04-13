@@ -27,7 +27,7 @@ inputs:
       prefix: -c
 
   eval_id:
-    type: int
+    type: string
     inputBinding:
       position: 2
       prefix: -e
