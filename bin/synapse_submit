@@ -7,7 +7,7 @@ while getopts "c:e:t:i:f:p:h" ARG; do
     	c ) CONFIG=$OPTARG;;
 		e ) EVAL_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--evalID' $EVAL_ID);;
         t ) TEAM_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--team' $TEAM_ID);;
-        i ) ENTITY_ID=$OPTARG CMD_ARGS=("${CMD_ARGS[@]}" '--entity' $ENTITY_ID);;
+        i ) ENTITY_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--entity' $ENTITY_ID);;
         f ) FILE_PATH=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--file' $FILE_PATH);;
 		p ) PARENT_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--parentId' $PARENT_ID);;
         h ) usage; exit 0;;
