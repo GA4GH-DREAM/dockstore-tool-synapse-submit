@@ -40,6 +40,6 @@ RUN git clone -b ${BRANCH} git://github.com/Sage-Bionetworks/synapsePythonClient
 COPY bin/synapse_submit /usr/local/bin/
 #COPY bin/parse_config.py /usr/local/bin/
 RUN chmod a+x /usr/local/bin/synapse_submit
-RUN chmod a+x /usr/local/bin/parse_config.py
+#RUN chmod a+x /usr/local/bin/parse_config.py
 
 CMD ["/bin/bash"]
