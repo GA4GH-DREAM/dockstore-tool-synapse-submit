@@ -9,7 +9,7 @@ FROM ubuntu:16.04
 LABEL base.image="ubuntu:16.04"
 LABEL version="1"
 LABEL software="synapseclient"
-LABEL software.version="1.6.2"
+LABEL software.version="1.6.2.dev"
 LABEL description="Programmatic interface to Synapse services for Python"
 LABEL website="https://github.com/Sage-Bionetworks/synapsePythonClient"
 LABEL documentation="https://github.com/Sage-Bionetworks/synapsePythonClient"
@@ -20,7 +20,9 @@ LABEL tags="General"
 MAINTAINER Thomas V Yu <thomasyu888@gmail.com>
 
 # set version here to minimize need for edits below
-ENV VERSION=1.6.2
+#ENV VERSION=1.6.2
+ENV BRANCH=develop
+ENV VERSION=6ba6a3ebde81fe8ed4d0c231ab42c613aa03334f
 
 # set up packages
 USER root
@@ -36,7 +38,7 @@ RUN git clone git://github.com/Sage-Bionetworks/synapsePythonClient.git && \
     python setup.py develop
 
 COPY bin/synapse_submit /usr/local/bin/
-COPY bin/parse_config.py /usr/local/bin/
+#COPY bin/parse_config.py /usr/local/bin/
 RUN chmod a+x /usr/local/bin/synapse_submit
 RUN chmod a+x /usr/local/bin/parse_config.py
 
