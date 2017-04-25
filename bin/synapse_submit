@@ -4,7 +4,7 @@ set -euf -o pipefail
 CMD_ARGS=('synapse')
 while getopts "c:e:t:i:f:p:h" ARG; do
     case "$ARG" in
-    	c ) CONFIG=$OPTARG;; CMD_ARGS=("${CMD_ARGS[@]}" '--c' $CONFIG 'submit');;
+    	c ) CONFIG=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--c' $CONFIG 'submit');;
 		e ) EVAL_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--evalID' $EVAL_ID);;
         t ) TEAM_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--team' $TEAM_ID);;
         i ) ENTITY_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--entity' $ENTITY_ID);;
