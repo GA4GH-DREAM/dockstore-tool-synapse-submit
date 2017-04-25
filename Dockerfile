@@ -34,7 +34,7 @@ RUN apt-get update && \
 
 RUN git clone -b ${BRANCH} git://github.com/Sage-Bionetworks/synapsePythonClient.git && \
     cd synapsePythonClient && \
-    git checkout v${VERSION} && \
+    git checkout ${VERSION} && \
     python setup.py develop
 
 COPY bin/synapse_submit /usr/local/bin/
