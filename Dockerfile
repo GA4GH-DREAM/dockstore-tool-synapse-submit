@@ -32,7 +32,7 @@ ENV PACKAGES python-dev git python-setuptools python-pip
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ${PACKAGES}
 
-RUN git clone git://github.com/Sage-Bionetworks/synapsePythonClient.git && \
+RUN git clone -b ${BRANCH} git://github.com/Sage-Bionetworks/synapsePythonClient.git && \
     cd synapsePythonClient && \
     git checkout v${VERSION} && \
     python setup.py develop
