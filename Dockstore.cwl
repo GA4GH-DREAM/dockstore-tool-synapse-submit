@@ -21,7 +21,7 @@ dct:creator:
 
 requirements:
 - class: DockerRequirement
-  dockerPull: quay.io/thomasyu888/dockstore-tool-synapse-submit:1.6.2--dev
+  dockerPull: quay.io/thomasyu888/dockstore-tool-synapse-submit:1.0.3
 
 inputs:
   config_file:
