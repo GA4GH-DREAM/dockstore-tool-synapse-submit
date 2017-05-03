@@ -6,7 +6,7 @@ while getopts "c:e:t:i:f:p:h" ARG; do
     case "$ARG" in
     	c ) CONFIG=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--c' $CONFIG 'submit');;
 		e ) EVAL_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--evalID' $EVAL_ID);;
-        t ) TEAM_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--team' $TEAM_ID);;
+        t ) TEAM_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--team' '"'$TEAM_ID'"');;
         i ) ENTITY_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--entity' $ENTITY_ID);;
         f ) FILE_PATH=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--file' $FILE_PATH);;
 		p ) PARENT_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--parentId' $PARENT_ID);;
@@ -26,6 +26,7 @@ shift $(($OPTIND - 1))
 
 COMMAND=$( IFS=' '; echo "${CMD_ARGS[*]}" );
 echo $COMMAND
-$COMMAND
+eval $COMMAND
+#$COMMAND
 
 

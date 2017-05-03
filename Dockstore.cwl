@@ -10,6 +10,10 @@ $namespaces:
   dct: http://purl.org/dc/terms/
   foaf: http://xmlns.com/foaf/0.1/
 
+doc: |
+  [![Docker Repository on Quay.io](https://quay.io/repository/thomasyu888/dockstore-tool-synapse-submit "Docker Repository on Quay.io")](https://quay.io/thomasyu888/dockstore-tool-synapse-submit)
+  The Synapse function to submit to an evaluation queue.
+
 dct:creator:
   "@id": "http://orcid.org/0000-0002-5841-0198"
   foaf:name: Thomas V Yu
@@ -17,7 +21,7 @@ dct:creator:
 
 requirements:
 - class: DockerRequirement
-  dockerPull: quay.io/thomasyu888/dockstore-tool-synapse-submit:1.6.2--dev
+  dockerPull: quay.io/thomasyu888/dockstore-tool-synapse-submit:1.0.3
 
 inputs:
   config_file:
