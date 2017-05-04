@@ -16,17 +16,7 @@ while getopts "c:e:t:i:f:p:h" ARG; do
 done
 shift $(($OPTIND - 1))
 
-# parse credentials from config file
-#CREDENTIALS=($(python /usr/local/bin/parse_config.py ${CONFIG}))
-#CREDENTIALS=($(python parse_config.py ${CONFIG}))
-#bash synapse_submit -c ../test.synapseConfig -f ../README.md  -p syn4990358 -e 6176859
-
-#get file from Synapse
-#synapse login -u ${CREDENTIALS[0]} -p ${CREDENTIALS[1]} --rememberMe
-
+# upload file to Synapse and/or submit entity to challenge
 COMMAND=$( IFS=' '; echo "${CMD_ARGS[*]}" );
 echo $COMMAND
 eval $COMMAND
-#$COMMAND
-
-

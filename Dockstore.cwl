@@ -11,7 +11,7 @@ $namespaces:
   foaf: http://xmlns.com/foaf/0.1/
 
 doc: |
-  [![Docker Repository on Quay.io](https://quay.io/repository/thomasyu888/dockstore-tool-synapse-submit "Docker Repository on Quay.io")](https://quay.io/thomasyu888/dockstore-tool-synapse-submit)
+  [![Docker Repository on Quay.io](https://quay.io/repository/ga4gh-dream/dockstore-tool-synapse-submit "Docker Repository on Quay.io")](https://quay.io/thomasyu888/dockstore-tool-synapse-submit)
   The Synapse function to submit to an evaluation queue.
 
 dct:creator:
@@ -21,7 +21,7 @@ dct:creator:
 
 requirements:
 - class: DockerRequirement
-  dockerPull: quay.io/thomasyu888/dockstore-tool-synapse-submit:1.0.3
+  dockerPull: quay.io/ga4gh-dream/dockstore-tool-synapse-submit:1.6.2.dev--3
 
 inputs:
   config_file:
