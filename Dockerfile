@@ -7,7 +7,7 @@ FROM ubuntu:16.04
 
 # Metadata
 LABEL base.image="ubuntu:16.04"
-LABEL version="1"
+LABEL version="3"
 LABEL software="synapseclient"
 LABEL software.version="1.6.2.dev"
 LABEL description="Programmatic interface to Synapse services for Python"
@@ -38,8 +38,6 @@ RUN git clone -b ${BRANCH} git://github.com/Sage-Bionetworks/synapsePythonClient
     python setup.py develop
 
 COPY bin/synapse_submit /usr/local/bin/
-#COPY bin/parse_config.py /usr/local/bin/
 RUN chmod a+x /usr/local/bin/synapse_submit
-#RUN chmod a+x /usr/local/bin/parse_config.py
 
 CMD ["/bin/bash"]
