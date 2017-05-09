@@ -7,7 +7,11 @@ FROM ubuntu:16.04
 
 # Metadata
 LABEL base.image="ubuntu:16.04"
+<<<<<<< HEAD
 LABEL version="3"
+=======
+LABEL version="4"
+>>>>>>> ff1ae3a8212e15dbbd9becdb73d8fcc5332c618a
 LABEL software="synapseclient"
 LABEL software.version="1.6.2.dev"
 LABEL description="Programmatic interface to Synapse services for Python"
@@ -27,7 +31,7 @@ ENV VERSION=6ba6a3ebde81fe8ed4d0c231ab42c613aa03334f
 # set up packages
 USER root
 
-ENV PACKAGES python-dev git python-setuptools python-pip
+ENV PACKAGES python-dev git python-setuptools python-pip zip
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ${PACKAGES}

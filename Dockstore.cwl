@@ -21,7 +21,7 @@ dct:creator:
 
 requirements:
 - class: DockerRequirement
-  dockerPull: quay.io/ga4gh-dream/dockstore-tool-synapse-submit:1.6.2.dev--3
+  dockerPull: quay.io/thomasyu888/dockstore-tool-synapse-submit:1.6.2.dev--4
 
 inputs:
   config_file:
@@ -42,11 +42,11 @@ inputs:
       position: 3
       prefix: -t
 
-  file:
-    type: File?
+  entity_id:
+    type: string?
     inputBinding:
       position: 4
-      prefix: -f
+      prefix: -i
 
   parent_id:
     type: string?
@@ -54,11 +54,12 @@ inputs:
       position: 5
       prefix: -p
 
-  entity_id:
-    type: string?
+  file:
+    type: File[]?
     inputBinding:
+      itemSeparator: " "
       position: 6
-      prefix: -i
+      prefix: -f
 
 outputs: []
 
