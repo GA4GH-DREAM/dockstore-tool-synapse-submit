@@ -27,7 +27,7 @@ ENV VERSION=6ba6a3ebde81fe8ed4d0c231ab42c613aa03334f
 # set up packages
 USER root
 
-ENV PACKAGES python-dev git python-setuptools python-pip
+ENV PACKAGES python-dev git python-setuptools python-pip zip
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ${PACKAGES}

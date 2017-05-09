@@ -6,8 +6,9 @@
     "eval_id": "6176859",
     "file": [{
         "class": "File",
-        "path": "README.md"
-    }],
+        "path": "README.md"},
+        {"class":"File",
+        "path":"test.cwl"}],
     "parent_id":"syn4990358",
     "team_name":"Pink Floyd"
 }

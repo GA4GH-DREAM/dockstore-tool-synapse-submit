@@ -42,11 +42,11 @@ inputs:
       position: 3
       prefix: -t
 
-  file:
-    type: File?
+  entity_id:
+    type: string?
     inputBinding:
       position: 4
-      prefix: -f
+      prefix: -i
 
   parent_id:
     type: string?
@@ -54,11 +54,12 @@ inputs:
       position: 5
       prefix: -p
 
-  entity_id:
-    type: string?
+  file:
+    type: File[]?
     inputBinding:
+      itemSeparator: " "
       position: 6
-      prefix: -i
+      prefix: -f
 
 outputs: []
 
