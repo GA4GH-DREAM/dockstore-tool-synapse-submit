@@ -1,22 +1,41 @@
 #!/usr/bin/env bash
 set -euf -o pipefail
+set -o nounset
 
 CMD_ARGS=('synapse')
-while getopts "c:e:t:i:f:p:h" ARG; do
+while getopts "c:e:t:i:p:f:h" ARG; do
     case "$ARG" in
     	c ) CONFIG=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--c' $CONFIG 'submit');;
 		e ) EVAL_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--evalID' $EVAL_ID);;
         t ) TEAM_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--team' '"'$TEAM_ID'"');;
         i ) ENTITY_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--entity' $ENTITY_ID);;
-        f ) FILE_PATH=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--file' $FILE_PATH);;
-		p ) PARENT_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--parentId' $PARENT_ID);;
+        p ) PARENT_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--parentId' $PARENT_ID);;
+        f ) FILE_PATH=$OPTARG;;
         h ) usage; exit 0;;
         * ) usage; exit 1;;
     esac
 done
 shift $(($OPTIND - 1))
+#Sets TEAM_ID as a blank if unbound team id variable
+TEAM_ID=${TEAM_ID:-}
+TIME=$(date +%s)
+TEAM=$(echo $TEAM_ID | sed -e 's/ //')
 
 # upload file to Synapse and/or submit entity to challenge
+FILE_PATH=${FILE_PATH:-}
+echo $FILE_PATH
+if [ ! -z ${FILE_PATH} ]; then
+    words=($FILE_PATH)
+    num=${#words[@]}
+    #If more than one file, then zip if up
+    if [ "$num" -gt 1 ]; then
+        zip -j $EVAL_ID'_'$TEAM'_'$TIME'.zip' $FILE_PATH
+        CMD_ARGS=("${CMD_ARGS[@]}" '--file' $EVAL_ID'_'$TEAM'_'$TIME'.zip')
+    else
+        CMD_ARGS=("${CMD_ARGS[@]}" '--file' $FILE_PATH)
+    fi
+fi
+
 COMMAND=$( IFS=' '; echo "${CMD_ARGS[*]}" );
 echo $COMMAND
 eval $COMMAND
