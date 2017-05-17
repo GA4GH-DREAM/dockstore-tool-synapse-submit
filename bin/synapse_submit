@@ -16,21 +16,28 @@ while getopts "c:e:t:i:p:f:h" ARG; do
     esac
 done
 shift $(($OPTIND - 1))
-#Sets TEAM_ID as a blank if unbound team id variable
+
+# set TEAM_ID as a blank if unbound team id variable
 TEAM_ID=${TEAM_ID:-}
 TIME=$(date +%s)
 TEAM=$(echo $TEAM_ID | sed -e 's/ //')
 
 # upload file to Synapse and/or submit entity to challenge
 FILE_PATH=${FILE_PATH:-}
-echo $FILE_PATH
-if [ ! -z ${FILE_PATH} ]; then
+if [ ! -z "$FILE_PATH" ]; then
     words=($FILE_PATH)
     num=${#words[@]}
-    #If more than one file, then zip if up
+    echo "${num} files to submit:"
+    for f in "${words[@]}"; do
+        echo "- ${f}"
+    done
+
+    # if more than one file, then zip if up
     if [ "$num" -gt 1 ]; then
-        zip -j $EVAL_ID'_'$TEAM'_'$TIME'.zip' $FILE_PATH
-        CMD_ARGS=("${CMD_ARGS[@]}" '--file' $EVAL_ID'_'$TEAM'_'$TIME'.zip')
+        ZIP_PATH="${EVAL_ID}_${TEAM}_${TIME}.zip..."
+        echo "creating zip file ${ZIP_PATH}"
+        zip -j $ZIP_PATH $FILE_PATH
+        CMD_ARGS=("${CMD_ARGS[@]}" '--file' $ZIP_PATH)
     else
         CMD_ARGS=("${CMD_ARGS[@]}" '--file' $FILE_PATH)
     fi

@@ -7,7 +7,7 @@ FROM ubuntu:16.04
 
 # Metadata
 LABEL base.image="ubuntu:16.04"
-LABEL version="4"
+LABEL version="5"
 LABEL software="synapseclient"
 LABEL software.version="1.6.2.dev"
 LABEL description="Programmatic interface to Synapse services for Python"
