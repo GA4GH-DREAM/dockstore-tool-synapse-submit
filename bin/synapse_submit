@@ -34,8 +34,8 @@ if [ ! -z "$FILE_PATH" ]; then
 
     # if more than one file, then zip if up
     if [ "$num" -gt 1 ]; then
-        ZIP_PATH="${EVAL_ID}_${TEAM}_${TIME}.zip..."
-        echo "creating zip file ${ZIP_PATH}"
+        ZIP_PATH="${EVAL_ID}_${TEAM}_${TIME}.zip"
+        echo "creating zip file ${ZIP_PATH}..."
         zip -j $ZIP_PATH $FILE_PATH
         CMD_ARGS=("${CMD_ARGS[@]}" '--file' $ZIP_PATH)
     else
