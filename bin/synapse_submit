@@ -7,7 +7,7 @@ while getopts "c:e:t:i:p:f:h" ARG; do
     case "$ARG" in
     	c ) CONFIG=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--c' $CONFIG 'submit');;
 		e ) EVAL_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--evalID' $EVAL_ID);;
-        t ) TEAM_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--team' '"'$TEAM_ID'"');;
+        t ) TEAM_ID=$OPTARG; if [[ ${#TEAM_ID} > 0 ]]; then CMD_ARGS=("${CMD_ARGS[@]}" '--team' '"'$TEAM_ID'"'); fi;;
         i ) ENTITY_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--entity' $ENTITY_ID);;
         p ) PARENT_ID=$OPTARG; CMD_ARGS=("${CMD_ARGS[@]}" '--parentId' $PARENT_ID);;
         f ) FILE_PATH=$OPTARG;;
@@ -21,6 +21,8 @@ shift $(($OPTIND - 1))
 TEAM_ID=${TEAM_ID:-}
 TIME=$(date +%s)
 TEAM=$(echo $TEAM_ID | sed -e 's/ //')
+
+
 
 # upload file to Synapse and/or submit entity to challenge
 FILE_PATH=${FILE_PATH:-}
