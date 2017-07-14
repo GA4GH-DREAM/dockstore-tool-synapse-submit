@@ -20,7 +20,7 @@ shift $(($OPTIND - 1))
 # set TEAM_ID as a blank if unbound team id variable
 TEAM_ID=${TEAM_ID:-}
 TIME=$(date +%s)
-TEAM=$(echo $TEAM_ID | sed -e 's/ //')
+TEAM=$(echo $TEAM_ID | sed -e 's/ //g')
 
 
 
@@ -38,7 +38,7 @@ if [ ! -z "$FILE_PATH" ]; then
     if [ "$num" -gt 1 ]; then
         ZIP_PATH="${EVAL_ID}_${TEAM}_${TIME}.zip"
         echo "creating zip file ${ZIP_PATH}..."
-        zip -j $ZIP_PATH $FILE_PATH
+#        zip -j $ZIP_PATH $FILE_PATH
         CMD_ARGS=("${CMD_ARGS[@]}" '--file' $ZIP_PATH)
     else
         CMD_ARGS=("${CMD_ARGS[@]}" '--file' $FILE_PATH)
@@ -47,4 +47,4 @@ fi
 
 COMMAND=$( IFS=' '; echo "${CMD_ARGS[*]}" );
 echo $COMMAND
-eval $COMMAND
+#eval $COMMAND
