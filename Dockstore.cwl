@@ -21,7 +21,7 @@ dct:creator:
 
 requirements:
 - class: DockerRequirement
-  dockerPull: quay.io/ga4gh-dream/dockstore-tool-synapse-submit:1.7.1--2
+  dockerPull: quay.io/ga4gh-dream/dockstore-tool-synapse-submit:1.7.2--1
 
 inputs:
   config_file:

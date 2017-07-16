@@ -7,9 +7,9 @@ FROM ubuntu:16.04
 
 # Metadata
 LABEL base.image="ubuntu:16.04"
-LABEL version="2"
+LABEL version="1"
 LABEL software="synapseclient"
-LABEL software.version="1.7.1"
+LABEL software.version="1.7.2"
 LABEL description="Programmatic interface to Synapse services for Python"
 LABEL website="https://github.com/Sage-Bionetworks/synapsePythonClient"
 LABEL documentation="https://github.com/Sage-Bionetworks/synapsePythonClient"
@@ -20,7 +20,7 @@ LABEL tags="General"
 MAINTAINER Thomas V Yu <thomasyu888@gmail.com>
 
 # set version here to minimize need for edits below
-ENV VERSION=1.7.1
+ENV VERSION=1.7.2
 
 # set up packages
 USER root
